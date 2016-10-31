@@ -1,0 +1,21 @@
+{
+  "name": "lit-meadow-93691",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.heroku.com/lit-meadow-93691.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "crypto": "0.0.3",
+    "express": "^4.14.0",
+    "superagent": "^2.3.0"
+  }
+}
