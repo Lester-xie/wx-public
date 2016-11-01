@@ -14,7 +14,7 @@ app.use('/wechat', wechat(config.wechat_middle, function (req, res, next) {
     if(message.Content=="二狗"){
         res.reply("敢这么叫哥的,一定是烂葵花,也可能是安大官人");
     }if(message.Content=="你真帅"){
-        res.reply("真给面子,muamua,<a href='www.baidu.com'>百度</a>");
+        res.reply("<a href='www.baidu.com'>百度</a>");
     }else{
         res.reply([
             "",
