@@ -12,7 +12,7 @@ app.use('/wechat', wechat(config.wechat_middle, function (req, res, next) {
     var message = req.weixin;
     console.log(message);
     if(message.Content=="二狗"){
-        res.reply("敢这么叫哥的,一定是烂葵花");
+        res.reply("敢这么叫哥的,一定是烂葵花,也可能是安大官人");
     }if(message.Content=="你真帅"){
         res.reply("真给面子,muamua");
     }else{
@@ -26,6 +26,6 @@ app.use('/wechat', wechat(config.wechat_middle, function (req, res, next) {
             "饭要一口一口的吃,路要一步步的走",
             "向你敬酒的人,不一定是尊敬你的人。但请你保健的,一定是关心你的人",
             "说我帅的人会得到惊喜,不信输入'你真帅'试试?"
-        ][Math.ceil(Math.random()*9)]);
+        ][Math.ceil(Math.random()*8)]);
     }
 }));
