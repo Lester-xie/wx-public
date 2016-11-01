@@ -3,7 +3,7 @@
  */
 
 const app = require("./server/server");
-require("./controller/serverCheck");
+// require("./controller/serverCheck");
 require("./controller/getAccessToken");
 require("./controller/getMessage");
 
