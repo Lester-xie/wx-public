@@ -3,10 +3,10 @@
  */
 
 const app = require("../server/server");
-const wechat = require('wechat');
 const config = require('../server/config');
+const wechat = require('wechat');
 
-app.use('/wechat', wechat(config.wechat_middle, function (req, res, next) {
+app.use('/wechat', wechat(config.wechat, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
