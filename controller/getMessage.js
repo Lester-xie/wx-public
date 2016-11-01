@@ -11,12 +11,21 @@ app.use('/wechat', wechat(config.wechat_middle, function (req, res, next) {
     // 微信输入信息都在req.weixin上
     var message = req.weixin;
     console.log(message);
-    res.reply([
-        {
-            title: '你来我家接我吧',
-            description: '这是女神与高富帅之间的对话',
-            picurl: 'http://picography.co/wp-content/uploads/2016/04/bohernabreena-waterworks.jpg',
-            url: 'http://picography.co/'
-        }
-    ]);
+    if(message.Content=="二狗"){
+        res.reply("敢这么叫哥的,一定是烂葵花");
+    }if(message.Content=="你真帅"){
+        res.reply("真给面子,muamua");
+    }else{
+        res.reply([
+            "",
+            "搞什么",
+            "放屁",
+            "呵呵",
+            "今天没段子,别催,快来了",
+            "从不严格的物理学上来说,楼高的地方拉屎比较费劲,因为引力小",
+            "饭要一口一口的吃,路要一步步的走",
+            "向你敬酒的人,不一定是尊敬你的人。但请你保健的,一定是关心你的人",
+            "说我帅的人会得到惊喜,不信输入'你真帅'试试?"
+        ][Math.ceil(Math.random()*9)]);
+    }
 }));
