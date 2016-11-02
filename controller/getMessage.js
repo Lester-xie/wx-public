@@ -43,6 +43,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 } else {
                     resMsg = data[0].title + "\n" + data[0].url;
                 }
+                console.log(resMsg);
                 res.reply({content: resMsg, type: "text"});
             });
         }
