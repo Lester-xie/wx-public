@@ -3,7 +3,6 @@
  */
 
 const express = require('express');
-const bodyParser = require("body-parser");
 const app = express();
 
 app.use(express.query());
@@ -17,10 +16,5 @@ app.use(express.query());
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
-
-app.get("/",function (req, res) {
-    res.send("hello world");
-})
-
 
 module.exports = app;

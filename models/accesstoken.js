@@ -1,10 +1,8 @@
 /**
  * Created by nali on 16/10/31.
  */
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://120.77.55.92:27017/test');
 
-const Schema = mongoose.Schema;
+const Schema = require("./config");
 
 //骨架模版
 const accessToken = new Schema({

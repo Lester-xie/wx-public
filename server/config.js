@@ -3,7 +3,7 @@
  */
 
 const config = {
-    wechat:{
+    wechat: {
         token: 'imbulger',
         appid: 'wx871a92db8d222adc',
         encodingAESKey: 'hS8a15rDJfM9Kpr2yl4uJXeLpSvz035fi7P8FRP0m8o'
