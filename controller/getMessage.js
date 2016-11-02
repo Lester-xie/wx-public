@@ -27,35 +27,33 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         });
     }
 
-     let number = Math.ceil(message.Content);
-	console.log(number);
-	console.log(typeof number != 'number');
-     if ((typeof number) == 'number') {
-         res.reply({
-             content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
-             type: "text"
-         })
-     } 
-//else {
-    //     var resMsg = "";
-    //
-    //     if (number > 6 && number < 1) {
-    //         resMsg = "别瞎搞了,塘子里还没这条神龙,你召唤不出来的";
-    //     } else {
-    //         Model.find({code: number}, function (err, data) {
-    //             console.log(data);
-    //             if (data.length == 0) {
-    //                 resMsg = "别催别催,在来的路上了";
-    //             } else {
-    //                 resMsg = data[0].title + "\n" + data[0].url;
-    //             }
-    //         });
-    //     }
-    //     console.log(resMsg);
-    //     res.reply({
-    //         content: resMsg,
-    //         type: "text"
-    //     })
-    // }
+    let number = Math.ceil(message.Content);
+
+    if ((typeof number) == 'number') {
+        var resMsg = "";
+
+        if (number > 6 && number < 1) {
+            resMsg = "别瞎搞了,塘子里还没这条神龙,你召唤不出来的";
+        } else {
+            Model.find({code: number}, function (err, data) {
+                console.log(data);
+                if (data.length == 0) {
+                    resMsg = "别催别催,在来的路上了";
+                } else {
+                    resMsg = data[0].title + "\n" + data[0].url;
+                }
+            });
+        }
+        console.log(resMsg);
+        res.reply({
+            content: resMsg,
+            type: "text"
+        })
+    } else {
+        res.reply({
+            content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
+            type: "text"
+        })
+    }
 
 }));
