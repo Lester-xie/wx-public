@@ -40,7 +40,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
             resMsg = "别瞎搞了,塘子里还没这条神龙(1-6),你召唤不出来的";
             res.reply({content: resMsg, type: "text"});
         }else if(number==0){
-            res.reply({content: "加油使劲记下来啊,魂淡\n"+name, type: "text"});
+            res.reply({content: "死鬼,你就不能用心记一下呀?\n"+name, type: "text"});
         } else {
             Model.find({code: number}, function (err, data) {
                 if (data.length == 0) {
@@ -54,7 +54,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         }
     } else {
         res.reply({
-            content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
+            content: '麻麻说,不按规则出牌的人屁股都比较大?别摸了,说的就是你',
             type: "text"
         })
     }
