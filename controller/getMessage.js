@@ -38,9 +38,10 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         var resMsg = "";
 
         if (number > 6 && number < 1) {
-            resMsg = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
+            resMsg = "别瞎搞了,塘子里还没这条神龙,你召唤不出来的";
         } else {
             Model.find({code: number}, function (err, data) {
+                console.log(data);
                 if (data.length == 0) {
                     resMsg = "别催别催,在来的路上了";
                 } else {
