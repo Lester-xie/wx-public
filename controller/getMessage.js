@@ -28,7 +28,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     }
 
     let number = Math.ceil(message.Content);
-
+    console.log("number",number)
     if (typeof number != "number") {
         res.reply({
             content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
@@ -41,6 +41,8 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
             message = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
         } else {
             Model.find({code: number}, function (err, data) {
+
+                console.log("data:",data);
                 if (data.length == 0) {
                     message = "别催别催,在来的路上了";
                 } else {
