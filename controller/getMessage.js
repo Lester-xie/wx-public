@@ -16,7 +16,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     if (message.Event == "subscribe") {
         res.reply({
             content: '哈,终于等到你。为了能及时接收行业最新最前沿技术资讯,帮助个人成长,所以诞生了这个消息驿站。\n' +
-            '回复博客对应的数字,即可获取该博客的最新文章链接\n' +
+            '回复博客对应的数字,即可获取该博客的最新文章链接\n\n' +
             '1：<a href="http://taobaofed.org">淘宝前端团队</a>\n' +
             '2：<a href="https://aotu.io/index.html">凹凸实验室</a>\n' +
             '3：<a href="http://fex.baidu.com">百度前端研发部</a>\n' +
@@ -27,11 +27,12 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         });
     }
 
-    let number = Math.ceil(message.Content);
+    let number = parseInt(message.Content, 10);
     if (!isNaN(number)) {
         var resMsg = "";
-
-        if (number > 6 && number < 1) {
+        if (String(number).indexOf('.') > -1) {
+            resMsg = "sir?你填小数会被扁的信不信?";
+        } else if (number > 6 || number < 1) {
             resMsg = "别瞎搞了,塘子里还没这条神龙,你召唤不出来的";
         } else {
             Model.find({code: number}, function (err, data) {
@@ -40,12 +41,12 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 } else {
                     resMsg = data[0].title + "\n" + data[0].url;
                 }
-                res.reply({
-                    content: resMsg,
-                    type: "text"
-                })
             });
         }
+        res.reply({
+            content: resMsg,
+            type: "text"
+        })
     } else {
         res.reply({
             content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
