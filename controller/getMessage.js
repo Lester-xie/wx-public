@@ -23,8 +23,8 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     //关注后发消息
     if (message.Event == "subscribe") {
         res.reply({
-            content: '  哈,终于等到你。为了能及时接收行业最新最前沿技术资讯,帮助个人成长,所以诞生了这个消息驿站。\n' +
-            '  回复博客对应的数字,即可获取该博客的最新文章链接。\n\n' + name + '\n回复0查看博客列表',
+            content: '\t哈,终于等到你。为了能及时接收行业最新最前沿技术资讯,帮助个人成长,所以诞生了这个消息驿站。\n' +
+            '\t回复博客对应的数字,即可获取该博客的最新文章链接。\n\n' + name + '\n回复0查看博客列表',
             type: 'text'
         });
     }
@@ -45,7 +45,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 if (data.length == 0) {
                     resMsg = "别催别催,在来的路上了";
                 } else {
-                    resMsg = number+"."+urlName[number] + "\n·" + data[0].title + "\n·" + data[0].url;
+                    resMsg = number+"."+urlName[number-1] + "\n·" + data[0].title + "\n·" + data[0].url;
                 }
                 console.log(resMsg);
                 res.reply({content: resMsg, type: "text"});
