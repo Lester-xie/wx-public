@@ -45,7 +45,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 if (data.length == 0) {
                     resMsg = "别催别催,在来的路上了";
                 } else {
-                    resMsg = urlName[number] + "\n" + data[0].title + "\n" + data[0].url;
+                    resMsg = urlName[number] + "\n　·" + data[0].title + "\n　·" + data[0].url;
                 }
                 console.log(resMsg);
                 res.reply({content: resMsg, type: "text"});
