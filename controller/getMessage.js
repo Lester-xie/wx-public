@@ -35,7 +35,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
             type: "text"
         })
     } else {
-        let resMsg = "";
+        var resMsg = "";
 
         if (number > 6 && number < 1) {
             resMsg = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
@@ -48,6 +48,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 }
             });
         }
+        console.log(resMsg);
         res.reply({
             content: resMsg,
             type: "text"
