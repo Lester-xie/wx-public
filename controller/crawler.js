@@ -26,34 +26,52 @@ const urls = [];
 });
 
 const ep = new eventproxy();
-ep.after('newArticle', urls.length, function (urlInfo) {
 
-    let data = urlInfo.map(function (item) {
-        let url = item[0].url;
-        let html = item[1];
-        let $ = cheerio.load(html);
 
-        let saveData = {
-            code: item[0].code,
-            title: item[0].getTitle($(item[0].selector)),
-            url: complete.resolve(url, $(item[0].selector).attr("href"))
-        };
-
-        new Model(saveData).save(function (err) {
-            if (err) {
-                console.log("保存失败");
-                return err;
+function crawl() {
+    ep.after('newArticle', urls.length, function (urlInfo) {
+        let data = urlInfo.map(function (item) {
+            if (item[1] == null) {
+                return;
             }
-        });
+            let url = item[0].url;
+            let html = item[1];
+            let $ = cheerio.load(html);
 
-        return (saveData);
+            let saveData = {
+                code: item[0].code,
+                title: item[0].getTitle($(item[0].selector)),
+                url: complete.resolve(url, $(item[0].selector).attr("href"))
+            };
+
+            Model.find({code: item[0].code}, function (err, data) {
+                if (data.length == 0) {
+                    new Model(saveData).save();
+                } else {
+                    Model.update({code: item[0].code}, {
+                        $set: {
+                            url: saveData.url,
+                            title: saveData.title
+                        }
+                    }, function (err) {
+                    });
+                }
+            });
+            // return (saveData);
+        });
+        // console.log(data);
     });
-    console.log(data);
-});
 
-urls.forEach(function (urlInfo) {
-    superagent.get(urlInfo.url)
-        .end(function (err, res) {
-            ep.emit('newArticle', [urlInfo, res.text]);
-        });
-});
+    urls.forEach(function (urlInfo) {
+        superagent.get(urlInfo.url)
+            .end(function (err, res) {
+                if (err) {
+                    console.log(err);
+                }
+                ep.emit('newArticle', [urlInfo, res && res.text]);
+            });
+    });
+    setTimeout(crawl, 3600 * 1000);
+}
+
+module.exports = crawl();

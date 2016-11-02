@@ -4,6 +4,7 @@
 
 const app = require("../server/server");
 const config = require('../server/config');
+const Model = require("../models/crawlInfo");
 const wechat = require('wechat');
 
 app.use('/wechat', wechat(config.wechat, function (req, res, next) {
@@ -12,26 +13,45 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     let message = req.weixin;
 
     //关注后发消息
-    if(message.Event=="subscribe"){
+    if (message.Event == "subscribe") {
         res.reply({
             content: '哈,终于等到你。为了能及时接收行业最新最前沿技术资讯,帮助个人成长,所以诞生了这个消息驿站。\n' +
-            '输入博客对应的数字,即可获取该博客的最新文章链接\n' +
-            '1：淘宝前端团队\n' +
-            '2：凹凸实验室\n' +
-            '3：百度前端研发部\n' +
-            '4：奇舞团\n' +
-            '5：京东设计中心\n' +
-            '6：阮一峰Blog',
+            '回复博客对应的数字,即可获取该博客的最新文章链接\n' +
+            '1：<a href="http://taobaofed.org">淘宝前端团队</a>\n' +
+            '2：<a href="https://aotu.io/index.html">凹凸实验室</a>\n' +
+            '3：<a href="http://fex.baidu.com">百度前端研发部</a>\n' +
+            '4：<a href="http://www.75team.com">奇舞团</a>\n' +
+            '5：<a href="https://jdc.jd.com/archives/category/5-frontend">京东设计中心</a>\n' +
+            '6：<a href="http://www.ruanyifeng.com/blog/">阮一峰blog</a>',
             type: 'text'
         });
     }
 
-    if(message.Content=="二狗"){
-        res.reply("敢这么叫哥的,一定是烂葵花,也可能是安大官人");
-    }if(message.Content=="你真帅"){
+    let number = Math.ceil(message.Content);
+
+    if (typeof number != "number") {
         res.reply({
-            content: '<a href="http://www.baidu.com">百度</a> ',
-            type: 'text'
-        });
+            content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
+            type: "text"
+        })
+    } else {
+        let message = "";
+
+        if (number > 6 && number < 1) {
+            message = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
+        } else {
+            Model.find({code: number}, function (err, data) {
+                if (data.length == 0) {
+                    message = "别催别催,在来的路上了";
+                } else {
+                    message = data[0].title + "\n" + data[0].url;
+                }
+            });
+        }
+        res.reply({
+            content: message,
+            type: "text"
+        })
     }
+
 }));
