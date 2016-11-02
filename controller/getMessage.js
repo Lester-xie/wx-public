@@ -39,7 +39,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
             resMsg = "别瞎搞了,塘子里还没这条神龙(1-6),你召唤不出来的";
             res.reply({content: resMsg, type: "text"});
         }else if(number==0){
-            res.reply({content: "使劲记下来啊,魂淡"+name, type: "text"});
+            res.reply({content: "使劲记下来啊,魂淡\n"+name, type: "text"});
         } else {
             Model.find({code: number}, function (err, data) {
                 if (data.length == 0) {
