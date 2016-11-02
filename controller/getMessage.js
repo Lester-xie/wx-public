@@ -35,7 +35,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         if (("" + number).indexOf('.') > -1) {
             resMsg = "sir?填小数会被扁的你信不信?";
             res.reply({content: resMsg, type: "text"});
-        } else if (number > 6 || number < 1) {
+        } else if (number > 6 || number < 0) {
             resMsg = "别瞎搞了,塘子里还没这条神龙(1-6),你召唤不出来的";
             res.reply({content: resMsg, type: "text"});
         }else if(number==0){
@@ -45,7 +45,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                 if (data.length == 0) {
                     resMsg = "别催别催,在来的路上了";
                 } else {
-                    resMsg = urlName[number] + "\n　·" + data[0].title + "\n　·" + data[0].url;
+                    resMsg = urlName[number] + "\n·" + data[0].title + "\n·" + data[0].url;
                 }
                 console.log(resMsg);
                 res.reply({content: resMsg, type: "text"});
