@@ -28,7 +28,7 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     }
 
     let number = Math.ceil(message.Content);
-
+	console.log(typeof number==='number');
     if ((typeof number) == 'number') {
         var resMsg = "";
 
@@ -41,14 +41,18 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
                     resMsg = "别催别催,在来的路上了";
                 } else {
                     resMsg = data[0].title + "\n" + data[0].url;
+			res.reply({
+				content:resMsg,
+				type:"text
+			})
                 }
             });
         }
-        console.log(resMsg);
-        res.reply({
-            content: resMsg,
-            type: "text"
-        })
+       // console.log(resMsg);
+       // res.reply({
+         //   content: resMsg,
+           // type: "text"
+       // })
     } else {
         res.reply({
             content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
