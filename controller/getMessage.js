@@ -35,22 +35,21 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
             type: "text"
         })
     } else {
-        let message = "";
+        let resMsg = "";
 
         if (number > 6 && number < 1) {
-            message = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
+            resMsg = "别瞎搞了,池里还没这条神龙,你召唤不出来的";
         } else {
             Model.find({code: number}, function (err, data) {
                 if (data.length == 0) {
-                    message = "别催别催,在来的路上了";
+                    resMsg = "别催别催,在来的路上了";
                 } else {
-                    message = data[0].title + "\n" + data[0].url;
+                    resMsg = data[0].title + "\n" + data[0].url;
                 }
             });
         }
-        console.log(message);
         res.reply({
-            content: message,
+            content: resMsg,
             type: "text"
         })
     }
