@@ -28,12 +28,13 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     }
 
     let number = parseInt(message.Content, 10);
+    console.log(number);
     if (!isNaN(number)) {
         var resMsg = "";
-        if (String(number).indexOf('.') > -1) {
+        if ((""+number).indexOf('.') > -1) {
             resMsg = "sir?你填小数会被扁的信不信?";
         } else if (number > 6 || number < 1) {
-            resMsg = "别瞎搞了,塘子里还没这条神龙,你召唤不出来的";
+            resMsg = "别瞎搞了,塘子里还没这条神龙(1-6),你召唤不出来的";
         } else {
             Model.find({code: number}, function (err, data) {
                 if (data.length == 0) {
