@@ -27,14 +27,16 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
         });
     }
 
-    // let number = Math.ceil(message.Content);
-    //
-    // if (typeof number != "number") {
-    //     res.reply({
-    //         content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
-    //         type: "text"
-    //     })
-    // } else {
+     let number = Math.ceil(message.Content);
+	console.log(number);
+	console.log(typeof number != 'number');
+     if ((typeof number) == 'number') {
+         res.reply({
+             content: '噢,该死,你不知道我只喜欢数字吗?我的朋友~',
+             type: "text"
+         })
+     } 
+//else {
     //     var resMsg = "";
     //
     //     if (number > 6 && number < 1) {
