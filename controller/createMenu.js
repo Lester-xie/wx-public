@@ -8,6 +8,9 @@ const menu_config = config.wx.wx_menu;
 const app_id      = process.env.WXAPPID;
 const app_secret  = process.env.WXAPPSECRET;
 
+console.log("app_id",app_id);
+console.log("app_secret",app_secret);
+
 //配置
 var api = new API(app_id, app_secret);
 
