@@ -3,18 +3,21 @@
  */
 
 const app = require("../server/server");
-// const config = require('../server/config');
-const config = require('../server/config1');
+const config = require('../server/config');
+const config1 = require('../server/config1');
 const Model = require("../models/crawlInfo");
 const wechat = require('wechat');
 
-// const wxConfig = {
-//     token:config.wx.token,
-//     appid:process.env.WXAPPID,
-//     encodingAESKey:process.env.WXENCODINGAESKEY
-// };
+const wxConfig = {
+    token:config.wx.token,
+    appid:process.env.WXAPPID,
+    encodingAESKey:process.env.WXENCODINGAESKEY
+};
 
-// console.log(wxConfig);
+console.log(wxConfig);
+
+console.log(config1);
+
 
 const urlName = ["淘宝前端团队", "凹凸实验室", "百度前端研发部", "奇舞团", "京东设计中心", "阮一峰blog"];
 const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
@@ -24,7 +27,7 @@ const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
     '5：<a href="https://jdc.jd.com/archives/category/5-frontend">' + urlName[4] + '</a>\n' +
     '6：<a href="http://www.ruanyifeng.com/blog/">' + urlName[5] + '</a>\n';
 
-app.use('/wechat', wechat(config.wechat, function (req, res, next) {
+app.use('/wechat', wechat(config1.wechat, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上
     let message = req.weixin;
