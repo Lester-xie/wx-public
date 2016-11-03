@@ -1,6 +1,7 @@
 {
   "wx": {
     "token": "imbulger",
+    "encodingAESKey":"hS8a15rDJfM9Kpr2yl4uJXeLpSvz035fi7P8FRP0m8o",
     "wx_menu": {
       "button": [
         {

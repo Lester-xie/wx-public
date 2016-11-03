@@ -10,7 +10,7 @@ const wechat = require('wechat');
 const wxConfig = {
     token:config.wx.token,
     appid:process.env.WXAPPID,
-    encodingAESKey:process.env.WXENCODINGAESKEY
+    encodingAESKey:config.wx.encodingAESKey
 };
 
 console.log(wxConfig);
