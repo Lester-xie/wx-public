@@ -27,7 +27,7 @@ const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
     '5：<a href="https://jdc.jd.com/archives/category/5-frontend">' + urlName[4] + '</a>\n' +
     '6：<a href="http://www.ruanyifeng.com/blog/">' + urlName[5] + '</a>\n';
 
-app.use('/wechat', wechat(config1.wechat, function (req, res, next) {
+app.use('/wechat', wechat(wxConfig, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上
     let message = req.weixin;
