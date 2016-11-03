@@ -20,6 +20,8 @@ app.use('/wechat', wechat(config.wechat, function (req, res, next) {
     // 微信输入信息都在req.weixin上
     let message = req.weixin;
 
+    console.log(message.event);
+
     //关注后发消息
     if (message.Event == "subscribe") {
         res.reply({
