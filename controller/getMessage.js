@@ -13,6 +13,8 @@ const wxConfig = {
     encodingAESKey:process.env.ENCODINGAESKEY
 };
 
+console.log(wxConfig)
+
 const urlName = ["淘宝前端团队", "凹凸实验室", "百度前端研发部", "奇舞团", "京东设计中心", "阮一峰blog"];
 const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
     '2：<a href="https://aotu.io/index.html">' + urlName[1] + '</a>\n' +
