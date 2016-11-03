@@ -2,7 +2,7 @@
  * Created by nali on 16/11/2.
  */
 
-const mongoose = require("./config");
+const mongoose = require("./dbconfig");
 
 const Schema = mongoose.Schema;
 

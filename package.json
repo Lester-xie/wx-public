@@ -21,6 +21,7 @@
     "mongoose": "^4.6.5",
     "multer": "^1.2.0",
     "superagent": "^2.3.0",
-    "wechat": "^2.0.3"
+    "wechat": "^2.0.3",
+    "wechat-api": "^1.31.0"
   }
 }

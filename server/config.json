@@ -1,0 +1,55 @@
+{
+  "wx": {
+    "token": "imbulger",
+    "wx_menu": {
+      "button": [
+        {
+          "name": "订阅",
+          "sub_button": [
+            {
+              "type": "click",
+              "name": "淘宝前端团队",
+              "key": "taobao"
+            },
+            {
+              "type": "click",
+              "name": "凹凸实验室",
+              "key": "aotu"
+            },
+            {
+              "type": "click",
+              "name": "百度前端研发部",
+              "key": "baidu"
+            },
+            {
+              "type": "click",
+              "name": "奇舞团",
+              "key": "75"
+            },
+            {
+              "type": "click",
+              "name": "京东设计中心",
+              "key": "jd"
+            },
+            {
+              "type": "click",
+              "name": "阮一峰blog",
+              "key": "ryf"
+            }
+          ]
+        },
+        {
+          "name": "反馈",
+          "type": "click",
+          "key": "view",
+          "url": ""
+        },
+        {
+          "name": "帮助",
+          "type": "click",
+          "key": "help"
+        }
+      ]
+    }
+  }
+}
