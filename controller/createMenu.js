@@ -12,10 +12,10 @@ const app_secret  = process.env.WXAPPSECRET;
 var api = new API(app_id, app_secret);
 
 //测试
-// function app(){
-//     api.createMenu(menu_config, function(err, result){
-//         console.log(result);
-//     });
-// }
+function app(){
+    // api.createMenu(menu_config, function(err, result){
+    //     console.log(result);
+    // });
+}
 
 module.exports = app;
