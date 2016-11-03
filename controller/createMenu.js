@@ -13,9 +13,9 @@ var api = new API(app_id, app_secret);
 
 //测试
 function app(){
-    // api.createMenu(menu_config, function(err, result){
-    //     console.log(result);
-    // });
+    api.createMenu(menu_config, function(err, result){
+        console.log(result);
+    });
 }
 
 module.exports = app;
