@@ -16,7 +16,7 @@ const wxConfig = {
 
 console.log(wxConfig);
 
-console.log(config1);
+console.log(config1.wechat);
 
 
 const urlName = ["淘宝前端团队", "凹凸实验室", "百度前端研发部", "奇舞团", "京东设计中心", "阮一峰blog"];
