@@ -8,6 +8,7 @@ const complete = require('url');
 
 const Model = require("../models/crawlInfo");
 
+// 设置需要爬取的网页信息
 const urls = [];
 [
     [1, "http://taobaofed.org", ".article-summary-inner a", p=>p.find("span").prop("alt")],//淘宝前端团队
@@ -25,9 +26,9 @@ const urls = [];
     })
 });
 
+
+// 开始爬取
 const ep = new eventproxy();
-
-
 function crawl() {
     ep.after('newArticle', urls.length, function (urlInfo) {
         let data = urlInfo.map(function (item) {
@@ -44,10 +45,13 @@ function crawl() {
                 url: complete.resolve(url, $(item[0].selector).attr("href"))
             };
 
+            // 和数据库已有数据进行差异判断
             Model.find({code: item[0].code}, function (err, data) {
                 if (data.length == 0) {
+                    // 保存数据
                     new Model(saveData).save();
                 } else {
+                    // 更新数据
                     Model.update({code: item[0].code}, {
                         $set: {
                             url: saveData.url,
@@ -71,6 +75,7 @@ function crawl() {
                 ep.emit('newArticle', [urlInfo, res && res.text]);
             });
     });
+    // 爬取周期设置为1小时
     setTimeout(crawl, 3600 * 1000);
 }
 

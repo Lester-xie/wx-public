@@ -6,7 +6,7 @@ const mongoose = require("./dbconfig");
 
 const Schema = mongoose.Schema;
 
-//骨架模版
+//数据库模版信息设定
 const crawlInfo = new Schema({
     code: Number,
     title: String,

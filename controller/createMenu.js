@@ -8,10 +8,8 @@ const menu_config = config.wx.wx_menu;
 const app_id      = process.env.WXAPPID;
 const app_secret  = process.env.WXAPPSECRET;
 
-//配置
+//想玩下wechat-api的,可惜了,没认证订阅号的没资格玩
 var api = new API(app_id, app_secret);
-
-//测试
 function app(){
     api.createMenu(menu_config, function(err, result){
         console.log(result);

@@ -1,9 +1,12 @@
 /**
  * Created by nali on 16/11/2.
  */
+
+// 数据库配置
 const mongoose = require('mongoose');
 const config = require('../server/config.json');
 
+// mongoose.connect('mongodb://localhost:port/mongodbName');
 mongoose.connect('mongodb://'+process.env.LOCALIP+':27017/test');
 
 var db = mongoose.connection;

@@ -9,12 +9,11 @@ const wechat = require('wechat');
 
 const wxConfig = {
     token:config.wx.token,
-    appid:process.env.WXAPPID,
+    appid:process.env.WXAPPID,   //敏感信息设置在环境变量里
     encodingAESKey:config.wx.encodingAESKey
 };
 
-console.log(wxConfig);
-
+//定义需要爬取的数据
 const urlName = ["淘宝前端团队", "凹凸实验室", "百度前端研发部", "奇舞团", "京东设计中心", "阮一峰blog"];
 const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
     '2：<a href="https://aotu.io/index.html">' + urlName[1] + '</a>\n' +
@@ -23,6 +22,7 @@ const name = '1：<a href="http://taobaofed.org">' + urlName[0] + '</a>\n' +
     '5：<a href="https://jdc.jd.com/archives/category/5-frontend">' + urlName[4] + '</a>\n' +
     '6：<a href="http://www.ruanyifeng.com/blog/">' + urlName[5] + '</a>\n';
 
+//接受微信转发的消息,按需回复
 app.use('/wechat', wechat(wxConfig, function (req, res, next) {
 
     // 微信输入信息都在req.weixin上
