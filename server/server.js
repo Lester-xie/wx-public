@@ -3,9 +3,10 @@
  */
 
 // 服务声明
-
+var compression = require('compression');
 const express = require('express');
 const app = express();
+app.use(compression());
 
 app.use(express.query());
 
@@ -18,5 +19,9 @@ app.use(express.query());
 //     res.header("Content-Type", "application/json;charset=utf-8");
 //     next();
 // });
+
+app.get("/test",function (req, res) {
+   res.send("hello world");
+});
 
 module.exports = app;

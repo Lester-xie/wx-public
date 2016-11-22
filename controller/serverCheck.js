@@ -32,3 +32,4 @@ module.exports =  app.get("/wechat", function (req, res) {
         res.end("false");
     }
 });
+
